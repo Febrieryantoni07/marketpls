@@ -1,0 +1,267 @@
+/* ===================================================================
+   SMASHZONE BADMINTON MARKETPLACE - MODERN SPORTY STYLESHEET
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bg-dark: #0a0f1d;
+    --bg-card: #131c31;
+    --bg-card-hover: #1a2642;
+    --border-color: #233152;
+    --primary-color: #0284c7;
+    --primary-gradient: linear-gradient(135deg, #0284c7 0%, #10b981 100%);
+    --accent-gold: #f59e0b;
+    --accent-emerald: #10b981;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    --card-hover-shadow: 0 20px 35px -5px rgba(2, 132, 199, 0.25), 0 10px 15px -5px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Glass Navbar */
+.navbar-custom {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    transition: all 0.3s ease;
+}
+
+.brand-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hero Section */
+.hero-banner {
+    position: relative;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2d42 100%);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    padding: 3.5rem 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, rgba(16, 185, 129, 0.08) 50%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Product Card */
+.racket-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.racket-card:hover {
+    transform: translateY(0px);
+    background-color: var(--bg-card-hover);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.racket-card .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #0b1120;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.racket-card .img-wrapper img {
+    max-height: 240px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.racket-card:hover .img-wrapper img {
+    transform: scale(1.06) rotate(-2deg);
+}
+
+.racket-card .price-tag {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #38bdf8;
+}
+
+.racket-card .spec-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px;
+    color: var(--text-secondary);
+}
+
+/* Custom Badges */
+.badge-custom-brand {
+    background: rgba(2, 132, 199, 0.18);
+    color: #38bdf8;
+    border: 1px solid rgba(2, 132, 199, 0.35);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Filter & Form Styles */
+.form-control-custom, .form-select-custom {
+    background-color: #17223b !important;
+    border: 1px solid #2d3e63 !important;
+    color: #f8fafc !important;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+}
+
+.form-control-custom:focus, .form-select-custom:focus {
+    background-color: #1a2642 !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.2) !important;
+    color: #fff !important;
+}
+
+.form-control-custom::placeholder {
+    color: #64748b !important;
+}
+
+/* Table Dark Custom */
+.table-custom {
+    color: #f8fafc !important;
+    border-color: var(--border-color) !important;
+}
+
+.table-custom th {
+    background-color: #131c31 !important;
+    color: #94a3b8;
+    font-weight: 600;
+    border-color: var(--border-color) !important;
+    padding: 1rem;
+}
+
+.table-custom td {
+    background-color: transparent !important;
+    border-color: var(--border-color) !important;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Detail Specs Box */
+.spec-box {
+    background: #17223b;
+    border: 1px solid #283759;
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.spec-title {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.spec-val {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-top: 4px;
+}
+
+/* Buttons */
+.btn-primary-custom {
+    background: var(--primary-gradient);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 0.7rem 1.4rem;
+    transition: all 0.25s ease;
+}
+
+.btn-primary-custom:hover {
+    box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.5);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+/* Floating Cart Badge */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 50%;
+    padding: 0.25rem 0.55rem;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
+}
+
+/* Footer */
+.footer-custom {
+    background-color: #0b1120;
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0 1.5rem;
+    color: #94a3b8;
+}
+
+/* Print Invoice Styles */
+@media print {
+    body {
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+    .navbar-custom, .footer-custom, .no-print, .btn {
+        display: none !important;
+    }
+    .card-print {
+        border: 1px solid #ddd !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+    .table-custom th, .table-custom td {
+        background-color: #fff !important;
+        color: #000 !important;
+        border-color: #ccc !important;
+    }
+}

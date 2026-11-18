@@ -1,0 +1,532 @@
+{
+	"info": {
+		"_postman_id": "c1f73b64-754d-4d7a-8fbb-98a9d3c5e8b1",
+		"name": "SmashZone Badminton Marketplace REST API",
+		"description": "Koleksi Postman resmi untuk pengujian seluruh endpoint REST API Marketplace Raket Badminton (SmashZone Soal 11) berbasis PHP Native & MySQLi.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dokumentasi & Root",
+			"item": [
+				{
+					"name": "GET API Index & Documentation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/index.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"index.php"
+							]
+						},
+						"description": "Menampilkan ringkasan seluruh endpoint, parameter query, dan format respon API."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1. Kategori",
+			"item": [
+				{
+					"name": "GET Seluruh Kategori (200 OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/kategori.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori.php"
+							]
+						},
+						"description": "Menampilkan daftar seluruh kategori raket beserta total produk di masing-masing kategori."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Detail Kategori ID=1 (200 OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/kategori.php?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Menampilkan informasi detail kategori dan daftar produk di bawah kategori tersebut."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Kategori Tidak Ditemukan (404 Not Found)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/kategori.php?id=9999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9999"
+								}
+							]
+						},
+						"description": "Menguji penanganan HTTP 404 ketika ID kategori tidak ada di database."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Kategori Format Invalid (400 Bad Request)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/kategori.php?id=abc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "abc"
+								}
+							]
+						},
+						"description": "Menguji penanganan HTTP 400 ketika parameter ID berupa karakter non-numerik."
+					},
+					"response": []
+				},
+				{
+					"name": "POST ke Kategori (405 Method Not Allowed)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/kategori.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori.php"
+							]
+						},
+						"description": "Menguji penanganan HTTP 405 ketika metode selain GET dikirim ke endpoint kategori."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Produk",
+			"item": [
+				{
+					"name": "GET Seluruh Produk (200 OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							]
+						},
+						"description": "Mengambil seluruh katalog produk raket badminton."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Filter Produk Brand Yonex (200 OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php?brand=Yonex",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "Yonex"
+								}
+							]
+						},
+						"description": "Mengambil produk berdasarkan merek/brand raket."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Pencarian Produk 'Ryuga' (200 OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php?search=Ryuga",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Ryuga"
+								}
+							]
+						},
+						"description": "Pencarian kata kunci produk."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Detail Produk ID=1 (200 OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Menampilkan detail lengkap raket badminton ID=1 beserta rating dan ulasan."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Detail Produk Tidak Ditemukan (404 Not Found)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php?id=99999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "99999"
+								}
+							]
+						},
+						"description": "Menguji respon HTTP 404 untuk produk yang tidak terdaftar."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Detail Produk ID Format Invalid (400 Bad Request)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php?id=-1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "-1"
+								}
+							]
+						},
+						"description": "Menguji respon HTTP 400 untuk ID produk negatif/tidak valid."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Produk (405 Method Not Allowed)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/produk.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"produk.php"
+							]
+						},
+						"description": "Menguji penanganan HTTP 405 ketika metode selain GET dikirim ke endpoint produk."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Pesanan",
+			"item": [
+				{
+					"name": "POST Buat Pesanan Baru (201 Created)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Muhammad Rizky Pratama\",\n    \"customer_email\": \"rizky.pratama@gmail.com\",\n    \"customer_phone\": \"081298765432\",\n    \"shipping_address\": \"Jl. Gatot Subroto Kav. 52, Tebet, Jakarta Selatan 12870\",\n    \"courier\": \"JNE Regular\",\n    \"payment_method\": \"Transfer Bank BCA\",\n    \"notes\": \"Mohon sertakan pelindung pipa PVC untuk raket.\",\n    \"items\": [\n        {\n            \"product_id\": 2,\n            \"quantity\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pesanan.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pesanan.php"
+							]
+						},
+						"description": "Menyimpan transaksi pesanan baru ke tabel orders dan order_items serta memotong stok produk secara atomik dengan MySQL Transaction."
+					},
+					"response": []
+				},
+				{
+					"name": "POST Pesanan Validasi Gagal (400 Bad Request)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Bo\",\n    \"customer_email\": \"bukan-email\",\n    \"customer_phone\": \"123\",\n    \"shipping_address\": \"Jl\",\n    \"items\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pesanan.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pesanan.php"
+							]
+						},
+						"description": "Menguji validasi form pesanan menghasilkan HTTP 400 beserta array rincian error."
+					},
+					"response": []
+				},
+				{
+					"name": "POST Pesanan Stok Kurang (400 Bad Request)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Budi Santoso\",\n    \"customer_email\": \"budi@gmail.com\",\n    \"customer_phone\": \"089876543210\",\n    \"shipping_address\": \"Jl. Merdeka Barat No. 45, Coblong, Kota Bandung\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 9999\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pesanan.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pesanan.php"
+							]
+						},
+						"description": "Menguji validasi stok database jika kuantitas yang dipesan melampaui sisa stok di tabel products."
+					},
+					"response": []
+				},
+				{
+					"name": "GET ke Pesanan (405 Method Not Allowed)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/pesanan.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pesanan.php"
+							]
+						},
+						"description": "Menguji penolakan metode selain POST pada endpoint pesanan."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost/web_marketpls",
+			"type": "string"
+		}
+	]
+}
